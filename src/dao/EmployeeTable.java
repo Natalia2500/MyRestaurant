@@ -112,18 +112,18 @@ public class EmployeeTable implements Table<Employee>{
   }
     
     
-   public List<Employee> search(Object catch_input) {
+   public List<Employee> getFrom(Object searchParam) {
         //ricerca per nome
         List<Employee> resList = new ArrayList<Employee>();
-        if(catch_input instanceof String){
+        if(searchParam instanceof String){
             
             String sql = "SELECT * FROM Employee WHERE codice_fiscale=? OR  name=? OR  surname =? OR  role=? ORDER BY name";
             try {
                 PreparedStatement ps = conn.prepareStatement(sql);
-                ps.setString(1, (String) catch_input);
-                 ps.setString(2, (String) catch_input);
-                 ps.setString(3, (String) catch_input);
-                 ps.setString(4, (String) catch_input);
+                ps.setString(1, (String) searchParam);
+                 ps.setString(2, (String) searchParam);
+                 ps.setString(3, (String) searchParam);
+                 ps.setString(4, (String) searchParam);
                 ResultSet resultSet = ps.executeQuery();
                 
                 while (resultSet.next()) {

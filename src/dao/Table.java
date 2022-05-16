@@ -15,7 +15,7 @@ import java.util.List;
 public interface Table<T> {
     
     List<T> getAll();
-    Object catch_input = "mario"; //getText
+ 
     
     //se servisse di restituire un oggetto nella lista
     //T get(int id);
@@ -27,6 +27,6 @@ public interface Table<T> {
     
     void delete(T t);
     
-    List<T>  search(Object catch_input);
+    List<T>  getFrom(Object searchParam);
   
 }

@@ -103,15 +103,15 @@ public class UtilityTable implements Table<Utility>{
     }
     
     
-    public List<Utility> search (Object catch_input) { 
+    public List<Utility> getFrom (Object searchParam) { 
         
         List<Utility> resList = new ArrayList<Utility>();
-        if(catch_input instanceof String){   //passso un oggetto di ricerca textinput
+        if(searchParam instanceof String){   //passso un oggetto di ricerca textinput
          
         String sql= "SELECT * FROM Utility WHERE type =? ORDER BY date";
         try {
                 PreparedStatement ps = conn.prepareStatement(sql); 
-                ps.setString(1, (String) catch_input);
+                ps.setString(1, (String) searchParam);
                 ps.execute();
                 ResultSet resultSet = ps.executeQuery();
                 
@@ -126,15 +126,15 @@ public class UtilityTable implements Table<Utility>{
             }   
         } 
         
-        else if (catch_input instanceof Integer) {
+        else if (searchParam instanceof Integer) {
             
         String sql=  "SELECT * FROM Utility WHERE numberId=? OR total = ? ORDER BY date"; 
        
         
             try {
                 PreparedStatement ps = conn.prepareStatement(sql); 
-                ps.setInt(1, (int) catch_input);
-                ps.setInt(2, (int) catch_input);
+                ps.setInt(1, (int) searchParam);
+                ps.setInt(2, (int) searchParam);
                 ps.execute();
                 ResultSet resultSet = ps.executeQuery();
                 
@@ -149,14 +149,14 @@ public class UtilityTable implements Table<Utility>{
             }  
         }
             
-        else if (catch_input instanceof LocalDate) {
+        else if (searchParam instanceof LocalDate) {
             
         String sql=  "SELECT * FROM Utility WHERE date =? ORDER BY date"; 
        
         
             try {
                 PreparedStatement ps = conn.prepareStatement(sql); 
-                ps.setDate(1, (Date) catch_input);
+                ps.setDate(1, (Date) searchParam);
                 ps.execute();
                 ResultSet resultSet = ps.executeQuery();
                 

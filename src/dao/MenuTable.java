@@ -97,15 +97,15 @@ public class MenuTable implements Table<Menu>{
         }
     }
     
-    public List<Menu> search (Object catch_input) { 
+    public List<Menu> getFrom (Object searchParam) { 
         
         List<Menu> resList = new ArrayList<Menu>();
-        if(catch_input instanceof String){   //passso un oggetto di ricerca textinput
+        if(searchParam instanceof String){   //passso un oggetto di ricerca textinput
          
         String sql= "SELECT * FROM Menu WHERE nameDish =? ";
         try {
                 PreparedStatement ps = conn.prepareStatement(sql); 
-                ps.setString(1, (String) catch_input);
+                ps.setString(1, (String) searchParam);
                 ps.execute();
                 ResultSet resultSet = ps.executeQuery();
                 
@@ -120,14 +120,14 @@ public class MenuTable implements Table<Menu>{
             }   
         } 
         
-        else if (catch_input instanceof Integer) {
+        else if (searchParam instanceof Integer) {
             
         String sql=  "SELECT * FROM Utility WHERE price=? "; 
        
         
             try {
                 PreparedStatement ps = conn.prepareStatement(sql); 
-                ps.setInt(1, (int) catch_input);
+                ps.setInt(1, (int) searchParam);
                
                 ps.execute();
                 ResultSet resultSet = ps.executeQuery();
