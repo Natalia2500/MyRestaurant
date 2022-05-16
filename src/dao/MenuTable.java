@@ -133,7 +133,7 @@ public class MenuTable implements Table<Menu>{
                 ResultSet resultSet = ps.executeQuery();
                 
                 while (resultSet.next()) {
-                    Menu m = new Menu(resultSet.getString("nameDish"),resultSet.getInt("price"));
+                    Menu m = new Menu(resultSet.getString("nameDish"),resultSet.getInt("price"),resultSet.getString("category"));
                     resList.add(m);
                 }
             }
@@ -142,5 +142,6 @@ public class MenuTable implements Table<Menu>{
                 ex.printStackTrace();
             }  
         }
-    
+     return resList;
+    }
 }

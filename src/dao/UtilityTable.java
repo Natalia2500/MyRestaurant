@@ -170,6 +170,7 @@ public class UtilityTable implements Table<Utility>{
                 ex.printStackTrace();
             }
         }     
+                return resList;
     }
     
 }

@@ -11,32 +11,34 @@ package entity;
  */
 public class Product implements Entity{
     
-    private int codice_barre;
-    private String nome;
-    private int qta;
-    private int prezzo;
+    private int barcode;
+    private String name;
+    private int qty;
+    private double price;
+    private String category;
+
     
-    public Product(int codice_barre, String nome, int qta, int prezzo){
-        this.codice_barre=codice_barre;
-        this.nome=nome;
-        this.qta=qta;
-        this.prezzo=prezzo;
+   public Product(int barcode, String name, int qty, double price){
+        this.barcode=barcode;
+        this.name=name;
+        this.qty=qty;
+        this.price=price;
     }
     
     public int getId(){
-        return this.codice_barre;
+        return this.barcode;
     }
     
     public String getName(){
-        return this.nome;
+        return this.name;
     }
     
     public int getQty(){
-        return this.qta;
+        return this.qty;
     }
     
-    public int getPrice(){
-        return this.prezzo;
+    public double getPrice(){
+        return this.price;
     }
 
     @Override
