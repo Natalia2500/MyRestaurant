@@ -16,6 +16,6 @@ public interface IControllerForView {
     void save(Entity e);
     void update(Entity e);
     void delete(Entity e);
-    Entity getById(String tableName, int id);
+   
      
 }

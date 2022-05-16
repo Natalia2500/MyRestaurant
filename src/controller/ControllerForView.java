@@ -7,7 +7,10 @@ package controller;
 
 import dao.EmployeeTable;
 import dao.MenuTable;
+import dao.OrderTable;
 import dao.ProductTable;
+import dao.ReceiptTable;
+import dao.SupplierTable;
 
 import dao.Table;
 import dao.UtilityTable;
@@ -38,6 +41,11 @@ public class ControllerForView implements IControllerForView{
         tableMap.put("empoyee", new EmployeeTable());
         tableMap.put("utility", new UtilityTable());
         tableMap.put("menu", new MenuTable());
+        tableMap.put("product", new ProductTable());
+        tableMap.put("receipt", new ReceiptTable());
+        tableMap.put("order", new OrderTable());
+        tableMap.put("supplier", new SupplierTable());
+
     }
 
     @Override
@@ -46,20 +54,18 @@ public class ControllerForView implements IControllerForView{
         entityTable.save(e);
     }
 
-
     @Override
     public void update(Entity e) {
+        Table entityTable = this.tableMap.get(e.getTableName());
+        entityTable.update(e);
     }
 
 
     @Override
     public void delete(Entity e) {
-    }
-
-
-    @Override
-    public Entity getById(String tableName, int id) {
-        return null;
+        Table entityTable = this.tableMap.get(e.getTableName());
+        entityTable.delete(e);
     }
     
+ 
 }
