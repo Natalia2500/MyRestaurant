@@ -24,22 +24,14 @@ import javafx.scene.control.TextField;
  *
  */
 
-    
 public class AddMenuDishController implements Initializable {
-
-    /**
-     * Initializes the controller class.
-     */
     
-    
-
     @FXML
     private Label categoriaLbl;
 
     @FXML
-    private ChoiceBox<?> categorieChoicebox;
-
-    
+    private ChoiceBox<String> categorieChoicebox;
+    private String[] categorie = {"Antipasti", "Primi", "Secondi", "Contorni", "Dolci", "Bevande"};
 
     @FXML
     private Button insertdishBtn;
@@ -56,7 +48,6 @@ public class AddMenuDishController implements Initializable {
     @FXML
     private TextField prezzoTxt;
 
-    
    
     
     @Override
@@ -67,12 +58,22 @@ public class AddMenuDishController implements Initializable {
             }
         });
         
+        
         prezzoTxt.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (!newValue.matches("\\d*")) {
                 prezzoTxt.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
         
+        categorieChoicebox.valueProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                categorieChoicebox.setValue(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+        
+        categorieChoicebox.getItems().addAll(categorie);
+        categorieChoicebox.setOnAction(this::getCategoriaScelta);
+
         
     }    
 
@@ -80,22 +81,25 @@ public class AddMenuDishController implements Initializable {
     private void addMenuDishBtnClicked(ActionEvent event) {
         
         //controllo che siano stati inseriti tutti i campi
-        if(nomeTxt.getText().isEmpty() || prezzoTxt.getText().isEmpty() ||  ){
+        if(nomeTxt.getText().isEmpty() || prezzoTxt.getText().isEmpty() || categorieChoicebox.getValue().isEmpty() ){
             
             System.out.println("campo vuoto");
             
         }else{
 		String nameDish = nomeTxt.getText();
             	int price = Integer.parseInt(prezzoTxt.getText());
-                String category = categoriaTxt.getText(); //param fisso per categoria selezionata
+                String categoria_scelta = categorieChoicebox.getValue(); //param fisso per categoria selezionata
                 
 
-            Menu m = new Menu (nameDish, price, category); //collego con entity del db
-            ControllerForView.getInstance().save(m);
-            System.out.println("aggiunto");
+                Menu m = new Menu (nameDish, price, categoria_scelta); //collego con entity del db
+                ControllerForView.getInstance().save(m);
+                System.out.println("aggiunto");
         }
         
     }
-        
-    
+
+    private void getCategoriaScelta(ActionEvent event) {
+        String categoria_scelta = categorieChoicebox.getValue();
+    }
+
 }

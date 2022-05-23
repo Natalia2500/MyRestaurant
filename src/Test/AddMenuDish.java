@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  */
 public class AddMenuDish extends Application {
     
-    @Override
+    /*@Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("AddMenuDish.fxml"));
         
@@ -26,15 +26,12 @@ public class AddMenuDish extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         
-    }
+    }*/
         
        
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
-    }
+    } 
     
 }

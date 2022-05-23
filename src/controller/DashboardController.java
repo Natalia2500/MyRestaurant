@@ -85,7 +85,7 @@ public class DashboardController implements Initializable {
     private void dashboardBtnClicked(ActionEvent event) throws IOException {
         select(dashboardBtn);
         resetAllExcept(dashboardBtn);
-        borderPane.setRight(FXMLLoader.load(getClass().getResource("/view/pane1.fxml")));
+        borderPane.setRight(FXMLLoader.load(getClass().getResource("/view/pane1.fxml"))); //grafici
     }
 
     @FXML
@@ -93,7 +93,7 @@ public class DashboardController implements Initializable {
         select(menuBtn);
         resetAllExcept(menuBtn);
         //setCentre con suddivisione categorie
-        borderPane.setRight(FXMLLoader.load(getClass().getResource("/view/pane2.fxml"))); //da riempire
+        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/view/pane2.fxml"))); // unico file menu.fxml con due pane
     }
 
     @FXML
