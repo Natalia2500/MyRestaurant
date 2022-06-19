@@ -73,6 +73,9 @@ public class AddEmployeeController implements Initializable {
 
     @FXML
     private Label stipendioLbl;
+    
+    @FXML
+    private Label titoloLbl;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

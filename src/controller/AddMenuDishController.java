@@ -47,6 +47,9 @@ public class AddMenuDishController implements Initializable {
 
     @FXML
     private TextField prezzoTxt;
+    
+    @FXML
+    private Label titoloLbl;
 
    
     

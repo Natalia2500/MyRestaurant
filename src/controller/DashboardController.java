@@ -85,34 +85,38 @@ public class DashboardController implements Initializable {
     private void dashboardBtnClicked(ActionEvent event) throws IOException {
         select(dashboardBtn);
         resetAllExcept(dashboardBtn);
-        borderPane.setRight(FXMLLoader.load(getClass().getResource("/view/pane1.fxml"))); //grafici
+        //borderPane.setRight(FXMLLoader.load(getClass().getResource("/view/pane1.fxml"))); //grafici
     }
 
     @FXML
     private void menuBtnClicked(ActionEvent event) throws IOException {
         select(menuBtn);
         resetAllExcept(menuBtn);
-        //setCentre con suddivisione categorie
-        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/view/pane2.fxml"))); // unico file menu.fxml con due pane
+        //setCentre con suddivisione categorie (gridpane) e dettagli
+        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/Test/AddMenuDish.fxml"))); // unico file menu.fxml con due pane
     }
 
     @FXML
-    private void employeesBtnClicked(ActionEvent event) {
+    private void employeesBtnClicked(ActionEvent event) throws IOException {
         select(employeesBtn);
         resetAllExcept(employeesBtn);
+        borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddEmployee.fxml")));
+        //borderpane setCentre gridpane da caricare
     }
 
     @FXML
     private void storeBtnClicked(ActionEvent event) throws IOException {
         select(storeBtn);
         resetAllExcept(storeBtn);
-        borderPane.setRight(FXMLLoader.load(getClass().getResource("/view/addProductPane.fxml")));
+        borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/addProductPane.fxml")));
     }
 
     @FXML
-    private void billsBtnClicked(ActionEvent event) {
+    private void billsBtnClicked(ActionEvent event) throws IOException {
         select(billsBtn);
         resetAllExcept(billsBtn);
+        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/Test/UtilitiesPanel.fxml")));
+        borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddUtility.fxml")));
     }
 
     @FXML

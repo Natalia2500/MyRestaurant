@@ -33,38 +33,38 @@ public class AddUtilityController implements Initializable {
 
     @FXML
     private TextField datautenzaTxt;
-    
-    @FXML
-    private TextField importoutenzaTxt;
 
     @FXML
     private Label importoLbl;
 
     @FXML
-    private TextField nutenzaTxt;
+    private TextField importoutenzaTxt;
 
     @FXML
-    private Button insertUtility;
+    private Button insertUtilityBtn;
 
     @FXML
     private Label nfatturaLbl;
 
     @FXML
-    private TextField numuetnzaTxt;
+    private TextField nfatturaTxt;
+    
+    @FXML
+    private Label titoloLbl;
 
     @FXML
     private ComboBox<String> utenzeChoiceBox;
-    private String[] tipo_utenza = {"Elettricità", "Acqua", "Gas"};
+    private String[] tipo_utenza = {"Energia elettrica", "Acqua", "Gas"};
    
 
     @FXML
     void AddUtilityBtnClicked(ActionEvent event) {
-        if(nutenzaTxt.getText().isEmpty() || importoutenzaTxt.getText().isEmpty() || datautenzaTxt.getText().isEmpty() ||utenzeChoiceBox.getValue().isEmpty() ){
+        if(nfatturaTxt.getText().isEmpty() || importoutenzaTxt.getText().isEmpty() || datautenzaTxt.getText().isEmpty() ||utenzeChoiceBox.getValue().isEmpty() ){
             
             System.out.println("campo vuoto");
             
         }else{
-		int num_utility = Integer.parseInt(nutenzaTxt.getText());
+		int num_utility = Integer.parseInt(nfatturaTxt.getText());
             	int  total= Integer.parseInt(importoutenzaTxt.getText());
                 String type = utenzeChoiceBox.getValue();
                 
@@ -83,9 +83,9 @@ public class AddUtilityController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        nutenzaTxt.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
+        nfatturaTxt.textProperty().addListener((ObservableValue<? extends String> observable, String oldValue, String newValue) -> {
             if (!newValue.matches("\\d*")) {
-                nutenzaTxt.setText(newValue.replaceAll("[^\\d]", ""));
+                nfatturaTxt.setText(newValue.replaceAll("[^\\d]", ""));
             }
         });
         

@@ -12,12 +12,13 @@ import javafx.fxml.Initializable;
  *
  * @author milar
  */
-
+public class MenuPanelController implements Initializable{
+    
+@Override
 public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }
-public class MenuPanelController implements Initializable{
-    
+
     
     
 }
