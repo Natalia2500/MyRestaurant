@@ -7,13 +7,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
 
-
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="901.0" prefWidth="1152.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="901.0" prefWidth="1152.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
    <left>
-      <VBox prefHeight="901.0" prefWidth="307.0" style="-fx-background-color: #c2c6c8;" BorderPane.alignment="CENTER">
+      <VBox minWidth="-Infinity" prefHeight="901.0" prefWidth="307.0" style="-fx-background-color: #c2c6c8;" BorderPane.alignment="CENTER">
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" />
-            <Pane fx:id="buttonContainer" prefHeight="375.0" prefWidth="292.0">
+            <Pane minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" />
+            <Pane fx:id="buttonContainer" minWidth="-Infinity" prefHeight="375.0" prefWidth="292.0">
                <children>
                   <Button fx:id="dashboardBtn" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutX="41.0" layoutY="25.0" mnemonicParsing="false" onAction="#dashboardBtnClicked" prefHeight="37.0" prefWidth="210.0" text="Dashboard">
                      <graphic>
@@ -52,9 +51,9 @@
       </VBox>
    </left>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ebe7e7;" BorderPane.alignment="CENTER" />
+      <Pane fx:id="centerPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="902.0" prefWidth="347.0" style="-fx-background-color: #ebe7e7;" BorderPane.alignment="CENTER" />
    </center>
    <right>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ebe7e7;" BorderPane.alignment="CENTER" />
+      <Pane fx:id="rightPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="902.0" prefWidth="400.0" style="-fx-background-color: #ebe7e7;" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>

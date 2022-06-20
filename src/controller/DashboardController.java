@@ -46,6 +46,12 @@ public class DashboardController implements Initializable {
     private Pane buttonContainer;
     @FXML
     private BorderPane borderPane;
+    @FXML
+    private Pane rightPane;
+    @FXML
+    private Pane centerPane;
+
+
 
 
     /**
@@ -93,7 +99,7 @@ public class DashboardController implements Initializable {
         select(menuBtn);
         resetAllExcept(menuBtn);
         //setCentre con suddivisione categorie (gridpane) e dettagli
-        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/Test/AddMenuDish.fxml"))); // unico file menu.fxml con due pane
+        borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddMenuDish.fxml"))); // unico file menu.fxml con due pane
     }
 
     @FXML
