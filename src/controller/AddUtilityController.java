@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -51,6 +52,11 @@ public class AddUtilityController implements Initializable {
     
     @FXML
     private Label titoloLbl;
+    
+    @FXML
+    public AnchorPane anchorpaneAddUtility;
+    
+    private CommunicationController commController = CommunicationController.getInstance();
 
     @FXML
     private ComboBox<String> utenzeChoiceBox;

@@ -27,6 +27,6 @@ public interface Table<T> {
     
     void delete(T t);
     
-    List<T>  getFrom(Object searchParam);
+    List<T> getFrom(Object searchParam);
   
 }

@@ -45,9 +45,9 @@ public class DashboardController implements Initializable {
     @FXML
     private Pane buttonContainer;
     @FXML
-    private BorderPane borderPane;
+    protected BorderPane borderPane;
     @FXML
-    private Pane rightPane;
+    protected Pane rightPane;
     @FXML
     private Pane centerPane;
 
@@ -99,6 +99,7 @@ public class DashboardController implements Initializable {
         select(menuBtn);
         resetAllExcept(menuBtn);
         //setCentre con suddivisione categorie (gridpane) e dettagli
+        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/Test/MenuPanel.fxml")));
         borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddMenuDish.fxml"))); // unico file menu.fxml con due pane
     }
 
@@ -107,7 +108,7 @@ public class DashboardController implements Initializable {
         select(employeesBtn);
         resetAllExcept(employeesBtn);
         borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddEmployee.fxml")));
-        //borderpane setCentre gridpane da caricare
+        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/Test/EmployeesList.fxml")));
     }
 
     @FXML
@@ -122,7 +123,7 @@ public class DashboardController implements Initializable {
         select(billsBtn);
         resetAllExcept(billsBtn);
         borderPane.setCenter(FXMLLoader.load(getClass().getResource("/Test/UtilitiesPanel.fxml")));
-        borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddUtility.fxml")));
+        //borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddUtility.fxml")));
     }
 
     @FXML

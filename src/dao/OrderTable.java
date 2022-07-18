@@ -60,7 +60,7 @@ public class OrderTable implements Table<Order>{
             PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setDate(1, o.getDate());
                 ps.setInt(2, o.getProduct());
-                ps.setDouble(3, o.getQty());
+                ps.setInt(3, o.getQty());
                 ps.setInt(4, o.getState());
                 ps.setInt(5, o.getNumber());
             ps.execute();

@@ -24,7 +24,7 @@ public class ProductTable implements Table<Product>{
     ArrayList<Product> productsList = new ArrayList<Product>();
 
     @Override
-    public List<Product> getAll() {
+    public ArrayList<Product> getAll() {
         //seleziona tutti i prodotti nel db, li inserisce uno per uno nella lista e 
         //restituisce la lista
         return productsList;

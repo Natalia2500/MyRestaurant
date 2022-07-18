@@ -6,13 +6,45 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 
 /**
  *
  * @author milar
  */
 public class MenuPanelController implements Initializable{
+    
+     @FXML
+    private Button antipastiBtn;
+
+    @FXML
+    private Button bevandeBtn;
+
+    @FXML
+    private Button contorniBtn;
+
+    @FXML
+    private TextField dishSearchBar;
+
+    @FXML
+    private Button dolciBtn;
+
+    @FXML
+    private GridPane menuGridPane;
+
+    @FXML
+    private Button primiBtn;
+
+    @FXML
+    private Button secondiBtn;
+
+    @FXML
+    private Label titoloLbl;
     
 @Override
 public void initialize(URL url, ResourceBundle rb) {

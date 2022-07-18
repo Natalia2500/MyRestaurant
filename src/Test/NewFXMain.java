@@ -22,6 +22,8 @@ import javafx.stage.Stage;
  */
 public class NewFXMain extends Application {
     
+    public static Stage primaryStage;
+    
     @Override
     public void start(Stage primaryStage) throws IOException {
         //Parent root = FXMLLoader.load(getClass().getResource("CreateProduct.fxml"));

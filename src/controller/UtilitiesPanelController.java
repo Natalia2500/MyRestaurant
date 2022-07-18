@@ -15,6 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -22,11 +24,14 @@ import javafx.scene.layout.Pane;
  *
  * @author milar
  */
-public class UtilitiesPanelController implements Initializable {
+public class UtilitiesPanelController extends DashboardController implements Initializable  {
 
     
     @FXML
     private Button acquaBtn;
+    
+    @FXML
+    private AnchorPane anchorPaneUtenze;
 
     @FXML
     private Button energiaBtn;
@@ -35,8 +40,8 @@ public class UtilitiesPanelController implements Initializable {
     private Button gasBtn;
 
     @FXML
-    private Button insertutility;
-    
+    private Button insertutilityBtn;
+  
     @FXML
     private Pane rightPane;
     
@@ -51,15 +56,32 @@ public class UtilitiesPanelController implements Initializable {
     
     @FXML
     private TextField searchBar;
+    
+    private CommunicationController commController = CommunicationController.getInstance();
+    
+
+ 
+   /* private AddUtility AddUtility;
+    private Scene sceneinsertUtility; 
+    private AddUtilityController addUtilityController;*/
 
     @FXML
     void insertUtilityBtnClicked(ActionEvent event) throws IOException {
         
-       rightPane = FXMLLoader.load(getClass().getResource("/Test/AddUtility.fxml"));
+       //rightPane = FXMLLoader.load(getClass().getResource("/Test/AddUtility.fxml"));
+       
+       
+       //rightPane.getChildren().setAll(addUtilities);
+        /*FXMLLoader loader = new FXMLLoader(getClass().getResource("/Test/AddUtility.fxml"));
+        AnchorPane anchorpaneAddUtility = loader.load();
+        BorderPane borderPane = (BorderPane) insertutilityBtn.getScene().getRoot();
+        borderPane.setRight(anchorpaneAddUtility);*/
+        
+      BorderPane borderPane = (BorderPane) anchorPaneUtenze.getParent();
+      borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddUtility.fxml"))); 
       
-      
-      //rightPane.getChildren().setAll(addUtilities);
-      
+        
+ 
       
 
     }
@@ -70,7 +92,7 @@ public class UtilitiesPanelController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //TODO
     }    
     
 }

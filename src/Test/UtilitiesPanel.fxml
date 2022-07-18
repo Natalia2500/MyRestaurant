@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" minWidth="-Infinity" prefWidth="450.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UtilitiesPanelController">
+<AnchorPane id="AnchorPane" fx:id="anchorPaneUtenze" minWidth="-Infinity" prefWidth="450.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UtilitiesPanelController">
    <children>
       <Pane fx:id="leftPane" layoutX="5.0" prefHeight="424.0" prefWidth="357.0">
          <children>
