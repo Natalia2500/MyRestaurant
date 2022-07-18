@@ -9,20 +9,28 @@ package entity;
  *
  * 
  */
+import java.util.HashMap;
+
+/**
+ *
+ * @author Natalia
+ */
 public class Product implements Entity{
     
     private int barcode;
     private String name;
     private int qty;
     private double price;
+    private String supplier;
     private String category;
-
     
-   public Product(int barcode, String name, int qty, double price){
+    public Product(int barcode, String name, int qty, double price, String supplier, String category){
         this.barcode=barcode;
         this.name=name;
         this.qty=qty;
         this.price=price;
+        this.supplier = supplier;
+        this.category=category;
     }
     
     public int getId(){
@@ -40,10 +48,30 @@ public class Product implements Entity{
     public double getPrice(){
         return this.price;
     }
+    
+    public String getSupplier(){
+        return this.supplier;
+    }
+    
+    public String getCategory(){
+        return this.category;
+    }
 
     @Override
     public String getTableName() {
         return "product";
+    }
+
+    @Override
+    public HashMap<String, Object> map() {
+        HashMap<String, Object> res = new HashMap<String, Object>();
+        res.put("barcode", this.barcode);
+        res.put("name", this.name);
+        res.put("qty", this.qty);
+        res.put("price", this.price);
+        res.put("supplier", this.supplier);
+        res.put("category", this.category);
+        return res;
     }
     
 }

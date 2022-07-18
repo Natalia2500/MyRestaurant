@@ -7,6 +7,7 @@ package entity;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashMap;
 
 /**
  *
@@ -52,6 +53,17 @@ public class Order implements Entity{
     @Override
     public String getTableName() {
         return "order";
+    }
+    
+    @Override
+    public HashMap<String, Object> map() {
+        HashMap<String, Object> res = new HashMap<String, Object>();
+        res.put("number", this.number);
+        res.put("date", this.date);
+        res.put("productBarcode", this.product_barcode);
+        res.put("qty", this.qty);
+        res.put("state", this.state);
+        return res;
     }
     
 }

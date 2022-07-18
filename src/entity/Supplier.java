@@ -5,6 +5,7 @@
  */
 package entity;
 
+import java.util.HashMap;
 /**
  *
  * @author Natalia
@@ -30,6 +31,14 @@ public class Supplier implements Entity{
     @Override
     public String getTableName() {
         return "supplier";
+    }
+    
+    @Override
+    public HashMap<String, Object> map() {
+        HashMap<String, Object> res = new HashMap<String, Object>();
+        res.put("name", this.name);
+        res.put("site", this.site);
+        return res;
     }
     
 }

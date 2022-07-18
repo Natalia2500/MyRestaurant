@@ -5,10 +5,14 @@
  */
 package entity;
 
-/**
- *
- */
+
+import java.util.HashMap;
+
+
 public interface Entity {
     
     String getTableName();
+    
+    //returns a key->value representation of the entity
+    HashMap<String, Object> map();
 }
