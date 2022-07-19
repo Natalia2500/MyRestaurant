@@ -5,28 +5,29 @@
  */
 package dao;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
- * 
+ * @author Natalia
  * @param <T>
  */
 public interface Table<T> {
     
-    List<T> getAll();
- 
+    ArrayList<T> getAll();
     
     //se servisse di restituire un oggetto nella lista
     //T get(int id);
     
-    void save(T t);
-    //query 
+    boolean save(T entity);
     
-    void update(T t);
+    boolean update(T entity);
     
-    void delete(T t);
+    boolean delete(T entity);
     
-    List<T> getFrom(Object searchParam);
-  
+    ArrayList<T> getFrom(Object searchParam, String paramName);
+    
+    T constructEntityFromMap(HashMap<String,Object> map);
+
 }
