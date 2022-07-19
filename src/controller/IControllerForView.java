@@ -6,6 +6,8 @@
 package controller;
 
 import entity.Entity;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -13,9 +15,10 @@ import entity.Entity;
  */
 public interface IControllerForView {
     
-    void save(Entity e);
-    void update(Entity e);
-    void delete(Entity e);
-   
+    boolean save(HashMap<String, Object> EntityMap, String table);
+    boolean update(HashMap<String, Object> EntityMap, String table);
+    boolean delete(HashMap<String, Object> EntityMap, String table);
+    ArrayList<HashMap<String, Object>> getAll(String tableName);
+    ArrayList<HashMap<String, Object>> getFrom(Object searchParam, String paramName, String tableName);
      
 }

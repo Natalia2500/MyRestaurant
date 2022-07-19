@@ -5,6 +5,7 @@
  */
 package controller;
 
+import dao.CategoryTable;
 import dao.EmployeeTable;
 import dao.MenuTable;
 import dao.OrderTable;
@@ -15,6 +16,7 @@ import dao.SupplierTable;
 import dao.Table;
 import dao.UtilityTable;
 import entity.Entity;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,8 +26,6 @@ import java.util.Map;
  */
 public class ControllerForView implements IControllerForView{
     
-    //mappa le stringhe che vengono restituite dalle implementazioni delle Entity in
-    //istanze di Entity
     private Map<String, Table> tableMap = new HashMap<>();
     private static ControllerForView instance = null;
     
@@ -37,35 +37,60 @@ public class ControllerForView implements IControllerForView{
     }
     
     public ControllerForView(){
-        tableMap.put("product", new ProductTable());//associazione primo campo
-        tableMap.put("empoyee", new EmployeeTable());
-        tableMap.put("utility", new UtilityTable());
-        tableMap.put("menu", new MenuTable());
         tableMap.put("product", new ProductTable());
         tableMap.put("receipt", new ReceiptTable());
         tableMap.put("order", new OrderTable());
         tableMap.put("supplier", new SupplierTable());
-
+        tableMap.put("category", new CategoryTable());
     }
 
     @Override
-    public void save(Entity e){ 
-        Table entityTable = this.tableMap.get(e.getTableName()); //entityTable 
-        entityTable.save(e);
-    }
-
-    @Override
-    public void update(Entity e) {
-        Table entityTable = this.tableMap.get(e.getTableName());
-        entityTable.update(e);
+    public boolean save(HashMap<String, Object> entityMap, String tableName){ 
+        Table entityTable = this.tableMap.get(tableName);
+        Entity entity = (Entity)entityTable.constructEntityFromMap(entityMap);
+        boolean res = entityTable.save(entity);
+        return res;
     }
 
 
     @Override
-    public void delete(Entity e) {
-        Table entityTable = this.tableMap.get(e.getTableName());
-        entityTable.delete(e);
+    public boolean update(HashMap<String, Object> entityMap, String tableName) {
+        Table entityTable = this.tableMap.get(tableName);
+        Entity entity = (Entity)entityTable.constructEntityFromMap(entityMap);
+        boolean res = entityTable.update(entity);
+        return res;
+    }
+
+
+    @Override
+    public boolean delete(HashMap<String, Object> entityMap, String tableName) {
+        Table entityTable = this.tableMap.get(tableName);
+        Entity entity = (Entity)entityTable.constructEntityFromMap(entityMap);
+        boolean res = entityTable.delete(entity);
+        return res;
     }
     
+    @Override
+    public ArrayList getAll(String tableName){
+        
+        Table entityTable = this.tableMap.get(tableName);
+        ArrayList<Entity> resList = entityTable.getAll();
+        ArrayList<HashMap<String,Object>> res  = new ArrayList<HashMap<String,Object>>();
+        for(Entity entity : resList){
+            res.add(entity.map());
+        }
+        return res;
+    }
+
+    @Override
+    public ArrayList<HashMap<String, Object>> getFrom(Object searchParam, String paramName, String tableName) {
+        Table entityTable = this.tableMap.get(tableName);
+        ArrayList<Entity> resList = entityTable.getFrom(searchParam, paramName);
+        ArrayList<HashMap<String,Object>> res  = new ArrayList<HashMap<String,Object>>();
+        for(Entity entity : resList){
+            res.add(entity.map());
+        }
+        return res;
+    }
  
 }
