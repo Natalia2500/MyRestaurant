@@ -17,7 +17,7 @@ import javafx.scene.layout.GridPane;
  *
  * @author milar
  */
-public class MenuPanelController implements Initializable{
+public class MenuPaneController implements Initializable{
     
      @FXML
     private Button antipastiBtn;

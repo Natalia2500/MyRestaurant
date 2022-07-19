@@ -6,12 +6,15 @@ package controller;
 
 import entity.Menu;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -24,7 +27,7 @@ import javafx.scene.control.TextField;
  *
  */
 
-public class AddMenuDishController implements Initializable {
+public class AddMenuDishController extends BaseView implements Initializable {
     
     @FXML
     private Label categoriaLbl;
@@ -91,18 +94,38 @@ public class AddMenuDishController implements Initializable {
         }else{
 		String nameDish = nomeTxt.getText();
             	int price = Integer.parseInt(prezzoTxt.getText());
-                String categoria_scelta = categorieChoicebox.getValue(); //param fisso per categoria selezionata
+                String category = categorieChoicebox.getValue(); //param fisso per categoria selezionata
                 
 
-                Menu m = new Menu (nameDish, price, categoria_scelta); //collego con entity del db
-                ControllerForView.getInstance().save(m);
-                System.out.println("aggiunto");
+                HashMap<String, Object> menu = new HashMap<String, Object>();
+                menu.put("nameDish", nameDish);
+                menu.put("price", price);
+                menu.put("category", category);
+                
+                boolean res = controllerForView.save(menu, "menu");
+                if(!res){
+                    Alert a = new Alert(AlertType.WARNING);
+                    a.setContentText("Il piatto non è stato inserito!");
+                    a.show();
+                    resetTextFields();
+                }else{
+                    Alert a = new Alert(AlertType.INFORMATION);
+                    a.setContentText("Il piatto è stato inserito correttamente!");
+                    a.show();
+                    resetTextFields();
+                }
         }
         
     }
 
     private void getCategoriaScelta(ActionEvent event) {
-        String categoria_scelta = categorieChoicebox.getValue();
+        String category = categorieChoicebox.getValue();
+    }
+
+    private void resetTextFields() {
+        nomeTxt.setText("");
+        prezzoTxt.setText("");
+        categorieChoicebox.valueProperty().set(null);
     }
 
 }

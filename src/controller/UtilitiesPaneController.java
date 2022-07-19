@@ -24,7 +24,7 @@ import javafx.scene.layout.Pane;
  *
  * @author milar
  */
-public class UtilitiesPanelController extends DashboardController implements Initializable  {
+public class UtilitiesPaneController extends DashboardController implements Initializable  {
 
     
     @FXML

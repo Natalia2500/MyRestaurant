@@ -9,11 +9,14 @@ import entity.Menu;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -23,7 +26,7 @@ import javafx.scene.control.TextField;
  *
  * @author milar
  */
-public class AddEmployeeController implements Initializable {
+public class AddEmployeeController extends BaseView implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -137,10 +140,10 @@ public class AddEmployeeController implements Initializable {
             System.out.println("campo vuoto");
             
         }else{
-		String codiceF = codicefEmpTxt.getText();
-                String nameEmployee = nomeEmpTxt.getText();
-                String surnameEmployee = cognomeEmpTxt.getText();
-                String roleEmployee = ruoloEmpTxt.getText();
+		String codice_fiscale = codicefEmpTxt.getText();
+                String name = nomeEmpTxt.getText();
+                String surname = cognomeEmpTxt.getText();
+                String role = ruoloEmpTxt.getText();
             	int wage = Integer.parseInt(stipendioEmpTxt.getText());
                 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
@@ -151,12 +154,41 @@ public class AddEmployeeController implements Initializable {
                 
                 
 
-                Employee emp = new Employee (codiceF, nameEmployee, surnameEmployee, roleEmployee,  begin_date , end_date , wage); //collego con entity del db
-                ControllerForView.getInstance().save(emp);
-                System.out.println("aggiunto");
+                HashMap<String, Object> employee = new HashMap<String, Object>();
+                employee.put("codice_fiscale", codice_fiscale);
+                employee.put("name", name);
+                employee.put("surname", surname);
+                employee.put("role", role);
+                employee.put("wage", wage);
+                employee.put("begin_date", begin_date);
+                employee.put("end_date", end_date);
+                boolean res = controllerForView.save(employee, "employee");
+                if(!res){
+                    Alert a = new Alert(AlertType.WARNING);
+                    a.setContentText("Il dipendente non è stato inserito!");
+                    a.show();
+                    resetTextFields();
+                }else{
+                    Alert a = new Alert(AlertType.INFORMATION);
+                    a.setContentText("Il dipendente è stato inserito correttamente!");
+                    a.show();
+                    resetTextFields();
+                }
         }
         
     }
     
+    private void resetTextFields(){
+        codicefEmpTxt.setText("");
+        nomeEmpTxt.setText("");
+        stipendioEmpTxt.setText("");
+        cognomeEmpTxt.setText("");
+        ruoloEmpTxt.setText("");
+        iniziocontrattoEmpTxt.setText("");  //reset delle date
+        finecontrattoEmpTxt.setText("");
+    }
+    
     
 }
+
+

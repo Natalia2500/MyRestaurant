@@ -8,6 +8,7 @@ package controller;
 import dao.CategoryTable;
 import dao.EmployeeTable;
 import dao.MenuTable;
+import dao.UtilityTable;
 import dao.OrderTable;
 import dao.ProductTable;
 import dao.ReceiptTable;
@@ -42,6 +43,9 @@ public class ControllerForView implements IControllerForView{
         tableMap.put("order", new OrderTable());
         tableMap.put("supplier", new SupplierTable());
         tableMap.put("category", new CategoryTable());
+        tableMap.put("employee", new CategoryTable());
+        tableMap.put("menu", new CategoryTable());
+        tableMap.put("utility", new CategoryTable());
     }
 
     @Override

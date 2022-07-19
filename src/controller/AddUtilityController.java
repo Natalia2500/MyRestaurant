@@ -8,11 +8,13 @@ import entity.Utility;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -24,7 +26,7 @@ import javafx.scene.layout.AnchorPane;
  *
  * @author milar
  */
-public class AddUtilityController implements Initializable {
+public class AddUtilityController extends BaseView implements Initializable {
     
     @FXML
     private Label categoriaLbl;
@@ -70,18 +72,34 @@ public class AddUtilityController implements Initializable {
             System.out.println("campo vuoto");
             
         }else{
-		int num_utility = Integer.parseInt(nfatturaTxt.getText());
+		int numberId = Integer.parseInt(nfatturaTxt.getText());
             	int  total= Integer.parseInt(importoutenzaTxt.getText());
                 String type = utenzeChoiceBox.getValue();
                 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
                 String utility_date_string = datautenzaTxt.getText();
-                LocalDate utility_date = LocalDate.parse(utility_date_string, formatter);
+                LocalDate date = LocalDate.parse(utility_date_string, formatter);
                 
 
-                Utility u = new Utility ( num_utility,total , type, utility_date); //collego con entity del db
-                ControllerForView.getInstance().save(u);
-                System.out.println("aggiunto");
+                HashMap<String, Object> utility = new HashMap<String, Object>();
+                utility.put("numberId", numberId);
+                utility.put("total", total);
+                utility.put("type", type);
+                utility.put("date", date);
+                
+                
+                boolean res = controllerForView.save(utility, "utility");
+                if(!res){
+                    Alert a = new Alert(Alert.AlertType.WARNING);
+                    a.setContentText("Il piatto non è stato inserito!");
+                    a.show();
+                    resetTextFields();
+                }else{
+                    Alert a = new Alert(Alert.AlertType.INFORMATION);
+                    a.setContentText("Il piatto è stato inserito correttamente!");
+                    a.show();
+                    resetTextFields();
+                };
         }
 
     }
@@ -122,6 +140,13 @@ public class AddUtilityController implements Initializable {
     
         private void getTipoUtenza(ActionEvent event) {
         String tipologia_utenza = utenzeChoiceBox.getValue(); //return?
+    }
+        
+        private void resetTextFields() {
+        nfatturaTxt.setText("");
+        importoutenzaTxt.setText("");
+        datautenzaTxt.setText("");
+        utenzeChoiceBox.valueProperty().set(null);
     }
     
 }
