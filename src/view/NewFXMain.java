@@ -2,15 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Test;
+package view;
 
-/**
- *
- * @author milar
- */
 import java.io.IOException;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,15 +17,13 @@ import javafx.stage.Stage;
  */
 public class NewFXMain extends Application {
     
-    public static Stage primaryStage;
-    
     @Override
     public void start(Stage primaryStage) throws IOException {
         //Parent root = FXMLLoader.load(getClass().getResource("CreateProduct.fxml"));
-        Parent root = FXMLLoader.load(getClass().getResource("/Test/dashboard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
         
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/style/createProduct.css").toExternalForm());
+        //scene.getStylesheets().add(getClass().getResource("/style/createProduct.css").toExternalForm());
         scene.getStylesheets().add(getClass().getResource("/style/dashboard.css").toExternalForm());
 
         //primaryStage.setTitle("Add Product");
