@@ -99,30 +99,30 @@ public class DashboardController implements Initializable {
         select(menuBtn);
         resetAllExcept(menuBtn);
         //setCentre con suddivisione categorie (gridpane) e dettagli
-        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/Test/MenuPanel.fxml")));
-        borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddMenuDish.fxml"))); // unico file menu.fxml con due pane
+        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/view/MenuPanel.fxml")));
+        borderPane.setRight(FXMLLoader.load(getClass().getResource("/view/AddMenuDish.fxml"))); // unico file menu.fxml con due pane
     }
 
     @FXML
     private void employeesBtnClicked(ActionEvent event) throws IOException {
         select(employeesBtn);
         resetAllExcept(employeesBtn);
-        borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddEmployee.fxml")));
-        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/Test/EmployeesList.fxml")));
+        borderPane.setRight(FXMLLoader.load(getClass().getResource("/view/AddEmployee.fxml")));
+        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/view/EmployeesList.fxml")));
     }
 
     @FXML
     private void storeBtnClicked(ActionEvent event) throws IOException {
         select(storeBtn);
         resetAllExcept(storeBtn);
-        borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/addProductPane.fxml")));
+        borderPane.setRight(FXMLLoader.load(getClass().getResource("/view/addProductPane.fxml")));
     }
 
     @FXML
     private void billsBtnClicked(ActionEvent event) throws IOException {
         select(billsBtn);
         resetAllExcept(billsBtn);
-        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/Test/UtilitiesPanel.fxml")));
+        borderPane.setCenter(FXMLLoader.load(getClass().getResource("/view/UtilitiesPanel.fxml")));
         //borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddUtility.fxml")));
     }
 

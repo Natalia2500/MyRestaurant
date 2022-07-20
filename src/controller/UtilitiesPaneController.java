@@ -78,7 +78,7 @@ public class UtilitiesPaneController extends DashboardController implements Init
         borderPane.setRight(anchorpaneAddUtility);*/
         
       BorderPane borderPane = (BorderPane) anchorPaneUtenze.getParent();
-      borderPane.setRight(FXMLLoader.load(getClass().getResource("/Test/AddUtility.fxml"))); 
+      borderPane.setRight(FXMLLoader.load(getClass().getResource("/view/AddUtility.fxml"))); 
       
         
  
